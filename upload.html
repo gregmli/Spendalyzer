@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>Upload - Spendalyzer</title>
+</head>
+<body>
+<p>Hello {{ users.get_current_user().nickname() }}. <a href="{{ users.create_logout_url('/') }}">Sign out</a></p>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+<p>
+<input type="file" name="transactions" />
+<input type="submit" />
+</p>
+</form>
+
+<p>{{ transactions }} </p>
+
+</body>
+
+
+</html>
+
