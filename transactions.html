@@ -2,23 +2,42 @@
 
 <html>
 <head>
-<title>Upload - Spendalyzer</title>
+<title>Transactions - Spendalyzer</title>
+
+<link rel="stylesheet" type="text/css" href="/styles/styles.css" />
+
 </head>
 <body>
 <p>Hello {{ users.get_current_user().nickname() }}. <a href="{{ users.create_logout_url('/') }}">Sign out</a></p>
 
 <table border="1">
+<tr>
+	<th>Date</th>
+	<th>Description</th>
+	<th>Original Description</th>
+	<th>Amount</th>
+	<th>Type</th>
+	<th>Category</th>
+	<th>AccountName</th>	
+	<th>Labels</th>
+	<th>Notes</th>
+	<th>Added to Spendalyzer</th>
+	<th>Updated in Spendalyzer</th>
+</tr>
+
 {% for t in transactions %}
 <tr>
-	<td>{{ t.origDate }}</td>
+	<td>{{ t.transactionDate }}</td>
     <td>{{ t.origDescription }}</td>
     <td>{{ t.origOriginalDescription }}</td>
     <td>{{ t.origAmount }}</td>
     <td>{{ t.origTransactionType }}</td>
-    <td>{{ t.origCategory }}</td>
+    <td>{{ t.transactionCategory }}</td>
     <td>{{ t.origAccountName }}</td>
     <td>{{ t.origLabels }}</td>
     <td>{{ t.origNotes }}</td>
+    <td>{{ t.created }}</td>
+    <td>{{ t.modified }}</td>
 </tr>
 {% endfor %}
 

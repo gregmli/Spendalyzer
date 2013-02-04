@@ -1,0 +1,33 @@
+.errorMessage {
+	color: #a00;
+	border: 1px solid #a00;
+	background-color: #faa;
+}
+
+.successMessage {
+	color: #080;
+	border: 1px solid #080;
+	background-color: #cfc;
+}
+
+.successMessage, .errorMessage {
+	padding: 10px;
+}
+
+body {
+	font-family: arial;
+	
+}
+
+.categoryList {
+	margin: 0;
+	padding: 1em 0;
+	background: #eee;
+}
+
+.categoryList li {
+	list-style-type: none;
+	margin: 0.3em 0;
+	padding: 0.3em;
+	
+}
