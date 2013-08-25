@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>Configure Categories - Spendalyzer</title>
+
+<link rel="stylesheet" type="text/css" href="/styles/ui-lightness/jquery-ui-1.10.0.custom.css" />
+<link rel="stylesheet" type="text/css" href="/styles/styles.css" />
+
+
+</head>
+<body id="categoryConfig">
+<p>Hello {{ users.get_current_user().nickname() }}. <a href="{{ users.create_logout_url('/') }}">Sign out</a></p>
+
+<form action="/categories" method="POST" name="configureCategories">
+
+<input type="submit" value="Save Changes" />
+
+{% for budgetGroup in groupMap %}
+
+<h2>{{ budgetGroup | e }}</h2>
+
+<ul class="categoryList" budgetGroup="{{ budgetGroup | e }}">
+
+{%   for cat in groupMap[budgetGroup] %}
+    <li>{{ cat | e }} <a href="/transactions?category={{ cat | urlencode }}">&rsaquo;</a>
+    	<input type="hidden" name="{{ cat | e }}" value="{{ budgetGroup | e }}" />
+    </li>
+
+{%   endfor %}
+
+</ul>
+{% endfor %}
+
+<input type="submit" value="Save Changes" />
+
+</form>
+<script src="/scripts/jquery-1.9.0.js"></script>
+<script src="/scripts/jquery-ui-1.10.0.custom.js"></script>
+
+<script>
+
+$(function() {
+	var lists = $(".categoryList");
+
+	lists.sortable({
+		connectWith: ".categoryList",
+		stop: function(event, ui) {
+			var itm = ui.item;
+			var parent = itm.parent(".categoryList");
+			var newGroup = parent.attr('budgetGroup');
+			
+			var input = $("input", itm);
+			input.attr("value", newGroup);
+		}
+	}).disableSelection();
+});
+
+
+</script>
+
+</body>
+
+</html>
+

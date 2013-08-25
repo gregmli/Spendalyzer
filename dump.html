@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>Upload - Spendalyzer</title>
+</head>
+<body>
+<p>Hello {{ users.get_current_user().nickname() }}. <a href="{{ users.create_logout_url('/') }}">Sign out</a></p>
+
+<table border="1">
+{% for t in transactions %}
+<tr>
+	<td>{{ t.origDate }}</td>
+    <td>{{ t.origDescription }}</td>
+    <td>{{ t.origOriginalDescription }}</td>
+    <td>{{ t.origAmount }}</td>
+    <td>{{ t.origTransactionType }}</td>
+    <td>{{ t.origCategory }}</td>
+    <td>{{ t.origAccountName }}</td>
+    <td>{{ t.origLabels }}</td>
+    <td>{{ t.origNotes }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+
+
+</html>
+

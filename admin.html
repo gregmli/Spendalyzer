@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<title>Admin - Spendalyzer</title>
+
+
+<link rel="stylesheet" type="text/css" href="/styles/styles.css" />
+
+</head>
+<body>
+<p>Hello {{ users.get_current_user().nickname() }}. <a href="{{ users.create_logout_url('/') }}">Sign out</a></p>
+
+{% if error %}
+<div class="errorMessage">ERROR: {{ error }}</div>
+{% endif %}
+
+{% if success %}
+<div class="successMessage">{{ success }}</div>
+{% endif %}
+
+
+
+<form action="/admin" method="post" enctype="multipart/form-data">
+<p>
+<input type="hidden" name="action" value="clearUser" />
+<input type="submit" value="Clear current user's data" />
+</p>
+</form>
+
+</body>
+
+
+</html>
+
